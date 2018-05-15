@@ -51,9 +51,6 @@ def submitTS():
 #########################################################
 if __name__ == '__main__':
 
-  #args = Script.getPositionalArgs()
-  #if ( len( args ) != 1):
-    #Script.showHelp()
   try:
     res = submitTS()
     if not res['OK']:
