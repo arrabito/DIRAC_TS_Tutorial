@@ -13,6 +13,7 @@ def submitTS():
 
   job = Job()
   job.setName('build mandelbrot')
+  job.setOutputSandbox( ['*log'] )
   
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
   job.setExecutable('./mandel4ts/build_merged_img.py')

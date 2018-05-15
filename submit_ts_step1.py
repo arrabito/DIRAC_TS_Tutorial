@@ -15,6 +15,7 @@ def submitTS():
 
   job = Job()
   job.setName('mandelbrot raw')
+  job.setOutputSandbox( ['*log'] )
 
   job.workflow.addParameter( Parameter( "JOB_ID", "000000", "string", "", "", True, False, "Initialize JOB_ID" ) )   
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
@@ -25,8 +26,6 @@ def submitTS():
   outputSE = 'DESY-ZN-USER'
   metadata = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":"arrabito"} )
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, metadata ) )
-
-  job.setOutputSandbox( ['*log'] )
 
   t = Transformation()
 
