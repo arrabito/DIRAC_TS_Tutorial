@@ -26,7 +26,7 @@ def submitTS():
   #t.setGroupSize( 1 )  # Here you specify how many files should be grouped within the same request, e.g. 100
   t.setBody ( "Removal;RemoveFile" ) # Mandatory (the default is a ReplicateAndRegister operation)
 
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":{"in":["raw","merged"]},"owner":"arrabito"} )
+  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":{"in":["raw","merged"]},"owner":"larrabito"} )
   t.setFileMask(inputMetaquery) # catalog query is defined here
   
   res = t.addTransformation()  # Transformation is created here

@@ -19,12 +19,12 @@ def submitTS():
 
   job.workflow.addParameter( Parameter( "JOB_ID", "000000", "string", "", "", True, False, "Initialize JOB_ID" ) )   
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
-  job.setExecutable('./mandel4ts/mandelbrot2.py',arguments="-P 0.0005 -M 1000 -L @{JOB_ID} -N 200")
+  job.setExecutable('./mandel4ts/mandelbrot.py',arguments="-P 0.0005 -M 1000 -L @{JOB_ID} -N 200")
 
-  outputPath = '/vo.cta.in2p3.fr/user/a/arrabito/mandelbrot/testMD/images/raw'
+  outputPath = '/vo.france-grilles.fr/user/l/larrabito/mandelbrot/images/raw'
   outputPattern = 'data_*txt'
-  outputSE = 'DESY-ZN-USER'
-  metadata = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":"arrabito"} )
+  outputSE = 'DIRAC-USER'
+  metadata = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":"larrabito"} )
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, metadata ) )
 
   t = Transformation()

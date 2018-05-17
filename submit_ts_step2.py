@@ -18,10 +18,10 @@ def submitTS():
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
   job.setExecutable('./mandel4ts/merge_data.py')
  
-  outputPath = '/vo.cta.in2p3.fr/user/a/arrabito/mandelbrot/testMD/images/merged'
+  outputPath = '/vo.france-grilles.fr/user/l/larrabito/mandelbrot/images/merged'
   outputPattern = 'data_merged*txt'
-  outputSE = 'DESY-ZN-USER'
-  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"merged","owner":"arrabito"} )
+  outputSE = 'DIRAC-USER'
+  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"merged","owner":"larrabito"} )
 
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
   
@@ -30,10 +30,10 @@ def submitTS():
   t.setType( "DataReprocessing" ) 
   t.setDescription( "Merge mandelbrot images production" )
   t.setLongDescription( "Merge mandelbrot images production" )
-  t.setGroupSize( 10 ) 
+  t.setGroupSize( 7 ) 
   t.setBody ( job.workflow.toXML() )
 
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":"arrabito"} )
+  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":"larrabito"} )
   t.setFileMask(inputMetaquery) # catalog query is defined here
 
   res = t.addTransformation()  # Transformation is created here

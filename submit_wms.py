@@ -4,8 +4,8 @@
 from DIRAC.Core.Base import Script
 Script.setUsageMessage( '\n'.join( [ __doc__.split( '\n' )[1],
                                      'Usage:',
-                                     '  %s first_line' % Script.scriptName,
-                                     '\ne.g: %s 200'% Script.scriptName,
+                                     '  %s first_line factor' % Script.scriptName,
+                                     '\ne.g: %s 1'% Script.scriptName,
                                      ] ) )
 
 Script.parseCommandLine()
@@ -25,7 +25,7 @@ def submitWMS( args ):
   
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
 
-  job.setExecutable('./mandelbrot.py',arguments="-P 0.0005 -M 1000 -L %s -N 200 data_%s.bmp" % (first_line, first_line))
+  job.setExecutable('./mandel4ts/mandelbrot.py',arguments="-P 0.0005 -M 1000 -L %s -N 200" % first_line)
                     
   job.setOutputData( ['data_*.bmp','data*.txt'])
 

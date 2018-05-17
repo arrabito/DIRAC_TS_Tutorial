@@ -18,10 +18,10 @@ def submitTS():
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
   job.setExecutable('./mandel4ts/build_merged_img.py')
 
-  outputPath = '/vo.cta.in2p3.fr/user/a/arrabito/mandelbrot/testMD/images/final'
+  outputPath = '/vo.france-grilles.fr/user/l/larrabito/mandelbrot/testMD/images/final'
   outputPattern = 'merged_image.bmp'
-  outputSE = 'DESY-ZN-USER'
-  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"final","owner":"arrabito"} )
+  outputSE = 'DIRAC-USER'
+  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"final","owner":"larrabito"} )
 
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
   
@@ -33,7 +33,7 @@ def submitTS():
   t.setGroupSize( 10 ) 
   t.setBody ( job.workflow.toXML() )
 
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":"merged","owner":"arrabito"} )
+  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":"merged","owner":"larrabito"} )
   t.setFileMask(inputMetaquery) # catalog query is defined here
 
   res = t.addTransformation()  # Transformation is created here
