@@ -37,10 +37,10 @@ def submitTS():
   outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/raw')
   outputPattern = 'data_*txt'
   outputSE = 'DIRAC-USER'
-  metadata = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":owner} )
+  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":owner} )
 
   # job step3: upload data and set metadata
-  job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, metadata ) )
+  job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
 
   ########################################
   # Transformation definition
