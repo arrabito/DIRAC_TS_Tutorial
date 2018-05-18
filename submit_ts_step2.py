@@ -54,6 +54,7 @@ def submitTS():
   t.setBody ( job.workflow.toXML() )
 
   # define input data by metadata query
+  # only files with the correct image_width, image_height of the same owner will be merged
   inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} )
   t.setFileMask(inputMetaquery) 
 
