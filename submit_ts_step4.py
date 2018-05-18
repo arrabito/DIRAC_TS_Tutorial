@@ -14,7 +14,7 @@ def submitTS():
 
   ########################################
   # Modify here with your dirac username 
-  owner = 'larrabito'
+  owner = 'user02'
   ########################################
 
   ########################################

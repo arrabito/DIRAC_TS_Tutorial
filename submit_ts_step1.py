@@ -16,7 +16,7 @@ def submitTS():
 
   ########################################
   # Modify here with your dirac username 
-  owner = 'larrabito'
+  owner = 'user02'
   ########################################
 
   
@@ -47,6 +47,7 @@ def submitTS():
   ########################################
   t = Transformation()
 
+  t.setTransformationName( owner+'_step1' )
   t.setType( "MCSimulation" ) 
   t.setDescription( "Mandelbrot images production" )
   t.setLongDescription( "Mandelbrot images production" )

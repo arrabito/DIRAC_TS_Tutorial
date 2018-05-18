@@ -14,7 +14,7 @@ def submitTS():
 
   ########################################
   # Modify here with your dirac username 
-  owner = 'larrabito'
+  owner = 'user02'
   ########################################
 
   
@@ -43,7 +43,8 @@ def submitTS():
   # Transformation definition
   ########################################
   t = Transformation()
-  
+
+  t.setTransformationName( owner+'_step2' )
   t.setType( "DataReprocessing" ) 
   t.setDescription( "Merge mandelbrot images production" )
   t.setLongDescription( "Merge mandelbrot images production" )
