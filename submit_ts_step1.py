@@ -26,12 +26,14 @@ def submitTS():
   job = Job()
   job.setName('mandelbrot raw')
   job.setOutputSandbox( ['*log'] )
+  # this is so that the JOB_ID within the transformation can be evaluated on the fly in the job application, see below
   job.workflow.addParameter( Parameter( "JOB_ID", "000000", "string", "", "", True, False, "Initialize JOB_ID" ) )   
 
   ## define the job workflow in 3 steps
   # job step1: setup software
   job.setExecutable('git clone https://github.com/bregeon/mandel4ts.git')
   # job step2: run mandelbrot application
+  # note how the JOB_ID (within the transformation) is passed as an argument and will be evaluated on the fly
   job.setExecutable('./mandel4ts/mandelbrot.py',arguments="-P 0.0005 -M 1000 -L @{JOB_ID} -N 200")
 
   outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/raw')
