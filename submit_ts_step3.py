@@ -31,7 +31,7 @@ def submitTS():
   # job step2: run mandelbrot build image
   job.setExecutable('./mandel4ts/build_merged_img.py')
 
-  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images3/final')
+  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/final')
   outputPattern = 'merged_image.bmp'
   outputSE = 'DIRAC-USER'
   outputMetadata = json.dumps( {"application":"mandelbrot","image_format":"bmp", "image_width":7680, "image_height":4200, "owner":owner} )

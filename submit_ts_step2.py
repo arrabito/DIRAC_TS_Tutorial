@@ -31,7 +31,7 @@ def submitTS():
   # job step2: run mandelbrot merge
   job.setExecutable('./mandel4ts/merge_data.py')
  
-  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images3/merged')
+  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/merged')
   outputPattern = 'data_merged*txt'
   outputSE = 'DIRAC-USER'
   nb_input_files = 7

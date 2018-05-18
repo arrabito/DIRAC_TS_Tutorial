@@ -34,7 +34,7 @@ def submitTS():
   # job step2: run mandelbrot application
   job.setExecutable('./mandel4ts/mandelbrot.py',arguments="-P 0.0005 -M 1000 -L @{JOB_ID} -N 200")
 
-  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images3/raw')
+  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/raw')
   outputPattern = 'data_*txt'
   outputSE = 'DIRAC-USER'
   outputMetadata = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} )
