@@ -31,10 +31,11 @@ def submitTS():
   # job step2: run mandelbrot merge
   job.setExecutable('./mandel4ts/merge_data.py')
  
-  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images/merged')
+  outputPath = os.path.join('/vo.france-grilles.fr/user',owner[0],owner,'mandelbrot/images3/merged')
   outputPattern = 'data_merged*txt'
   outputSE = 'DIRAC-USER'
-  outputMetadata = json.dumps( {"application":"mandelbrot","image_type":"merged","owner":owner} )
+  nb_input_files = 7
+  outputMetadata = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200*nb_input_files, "owner":owner} )
 
   # job step3: upload data and set metadata
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
@@ -48,12 +49,12 @@ def submitTS():
   t.setType( "DataReprocessing" ) 
   t.setDescription( "Merge mandelbrot images production" )
   t.setLongDescription( "Merge mandelbrot images production" )
-  t.setGroupSize( 7 ) # group input files
+  t.setGroupSize( nb_input_files ) # group input files
   # set the job workflow to the transformation
   t.setBody ( job.workflow.toXML() )
 
   # define input data by metadata query
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":"raw","owner":owner} )
+  inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} )
   t.setFileMask(inputMetaquery) 
 
   ########################################

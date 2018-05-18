@@ -22,6 +22,7 @@ def submitTS():
   ########################################
   t = Transformation( )
 
+  t.setTransformationName( owner+'_step4' )
   t.setType("Removal")
   t.setDescription("Remove intermediate mandelbrot images")
   t.setLongDescription( "Remove intermediate mandelbrot images" ) 
@@ -29,7 +30,7 @@ def submitTS():
   t.setBody ( "Removal;RemoveFile" ) # Mandatory (the default is a ReplicateAndRegister operation)
 
   # define input data by metadata query
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_type":{"in":["raw","merged"]},"owner":owner} )
+  inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii","owner":owner} )
   t.setFileMask(inputMetaquery) 
 
   ########################################
