@@ -29,7 +29,7 @@ def submitWMS( args ):
                     
   job.setOutputData( ['data_*.bmp','data*.txt'])
 
-  res = dirac.submit(job)
+  res = dirac.submitJob(job)
 
   return res
 
