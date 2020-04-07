@@ -53,8 +53,8 @@ def submitTS():
   t.setBody ( job.workflow.toXML() )
 
   # define input data by metadata query
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":1400, "owner":owner} )
-  t.setFileMask(inputMetaquery) 
+  inputMetaquery = {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":1400, "owner":owner} 
+  t.setInputMetaQuery(inputMetaquery) 
 
   ########################################
   # Transformation submission

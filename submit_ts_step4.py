@@ -30,8 +30,8 @@ def submitTS():
   t.setBody ( "Removal;RemoveFile" ) # Mandatory (the default is a ReplicateAndRegister operation)
 
   # define input data by metadata query
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii","owner":owner} )
-  t.setFileMask(inputMetaquery) 
+  inputMetaquery = {"application":"mandelbrot","image_format":"ascii","owner":owner} 
+  t.setInputMetaQuery(inputMetaquery) 
 
   ########################################
   # Transformation submission

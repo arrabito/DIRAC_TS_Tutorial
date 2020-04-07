@@ -55,9 +55,9 @@ def submitTS():
 
   # define input data by metadata query
   # only files with the correct image_width, image_height of the same owner will be merged
-  inputMetaquery = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} )
-  t.setFileMask(inputMetaquery) 
-
+  inputMetaquery = {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} 
+  t.setInputMetaQuery(input_meta_query)
+  
   ########################################
   # Transformation submission
   ########################################
