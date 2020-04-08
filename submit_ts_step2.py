@@ -24,6 +24,7 @@ def submitTS():
   job = Job()
   job.setName('merge mandelbrot')
   job.setOutputSandbox( ['*log'] )
+  job.setType('DataReprocessing')
 
   ## define the job workflow in 3 steps
   # job step1: setup software

@@ -26,6 +26,8 @@ def submitTS():
   job = Job()
   job.setName('mandelbrot raw')
   job.setOutputSandbox( ['*log'] )
+  job.setType('MCSimulation')
+
   # this is so that the JOB_ID within the transformation can be evaluated on the fly in the job application, see below
   job.workflow.addParameter( Parameter( "JOB_ID", "000000", "string", "", "", True, False, "Initialize JOB_ID" ) )   
 
