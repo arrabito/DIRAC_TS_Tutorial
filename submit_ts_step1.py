@@ -47,6 +47,9 @@ def submitTS():
   # pilot.cfg in arguments is necessary with pilot 3 
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "pilot.cfg %s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
 
+  # job step4: mark input files as done with the FailoverRequest (and a few other things)
+  job.setExecutable('/bin/ls -l', modulesList=['Script', 'FailoverRequest'])
+
   ########################################
   # Transformation definition
   ########################################

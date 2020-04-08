@@ -40,6 +40,9 @@ def submitTS():
   # job step3: upload data and set metadata
   job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
   
+  # job step4: mark input files as done with the FailoverRequest (and a few other things)
+  job.setExecutable('/bin/ls -l', modulesList=['Script', 'FailoverRequest'])
+
   ########################################
   # Transformation definition
   ########################################
