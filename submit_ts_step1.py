@@ -44,7 +44,8 @@ def submitTS():
   outputMetadata = json.dumps( {"application":"mandelbrot","image_format":"ascii", "image_width":7680, "image_height":200, "owner":owner} )
 
   # job step3: upload data and set metadata
-  job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "%s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
+  # pilot.cfg in arguments is necessary with pilot 3 
+  job.setExecutable( './mandel4ts/dirac-add-files.py', arguments = "pilot.cfg %s '%s' %s '%s'" % (outputPath, outputPattern, outputSE, outputMetadata ) )
 
   ########################################
   # Transformation definition
